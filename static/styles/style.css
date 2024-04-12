@@ -1,0 +1,78 @@
+body, html{
+    height: 100%;
+    font-family: 'Roboto Slab', serif;
+   
+    background-repeat: no-repeat;
+    animation-name: bgcolor;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-delay: 1s;
+    
+    
+}
+
+header{
+    font-size: 54px;
+    font-family: 'Alfa Slab One', cursive;
+    color: red;
+    padding: 10px;
+    background-image: linear-gradient(to right, rgb(99, 195, 233), white);
+    border-bottom: 7px solid skyblue;
+    margin-bottom: 10px;
+    
+}
+
+.container{
+    margin-top: 100px;
+    padding: 50px;
+    border: 2px solid rgb(53, 84, 185);
+    border-radius: 10px;
+    box-shadow: 15px 15px 45px hsl(180, 1%, 32%);
+    
+}
+
+.container h2{
+    text-align: center;
+}
+
+.container form{
+    border: 1px solid rgb(141, 189, 193);
+    border-radius: 100px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.container input{
+    font-size: 18px;
+    font-weight: 300px;
+}
+
+#micro:hover{
+    transform: scale(1.2);
+    
+}
+
+@keyframes bgcolor {
+
+    0%{
+        background-color: rgb(231, 245, 177);
+    }
+    100%{
+        background-color: blanchedalmond;
+    }
+    
+}
+
+#outputtext{
+    color: rgb(189, 109, 242);
+    font-size:xx-large;
+    text-align: center;
+}
+
+#footer{
+    height: 150px;
+    background-color: rgb(155, 164, 232);
+    text-align: center;
+    margin-top: 100px;
+}
+

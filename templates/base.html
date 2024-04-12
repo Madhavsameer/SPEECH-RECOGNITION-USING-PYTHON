@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../static/styles/style.css">
+    <!--for page and header fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <title> SpeechRecognition </title>
+</head>
+
+<body>
+    <header align="center">
+        <img style="display: inline;" src="https://abilitynet.org.uk/sites/abilitynet.org.uk/files/admin/voicerecog.png" alt="logo" width="100px" height="100px">
+        <h1 style="display: inline;">Speech Recognition Using Python</h1>
+    </header>
+
+    <!-- for flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+           {% for category, message in messages %}
+            {% if category == 'error' %}
+                    <div class="alert alert-danger alter-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span><!--&times; => fancy char to show x -->
+                        </button>
+                    </div>
+                {% else %}
+                    <div class="alert alert-success alter-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span><!--&times; => fancy char to show x -->
+                        </button>
+                    </div>
+                {% endif %}
+           {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="container">
+        <!--to upload audio file-->
+        <form method="POST" enctype="multipart/form-data" align="center"> <!--to uploadd a file-->
+            <h2>Upload new file</h2>
+                <img style="display: inline;" src="../static/img/upload-logo.png" alt="upload-icon" width="60px" height="60px">
+                <input type="file" name="file" class="btn btn-outline-secondary"> 
+                <input type="submit" class="btn btn-primary" style="width: 200px; height: 50px;" value="Transcribe">   
+        </form>
+
+        <!--to speak on mic-->
+        <form action="/record/" align="center">
+            <h2>Speak</h2>
+            <button type="submit" class="btn" id="micro">
+                <img style="display: inline;" src="../static/img/mic-logo.png" alt="mic-logo"  width="60px" height="60px">
+            </button>
+        </form>
+
+        <!--to transcript the speech-->
+        {% if transcripted_text == "" %}
+            <p>Your Transcripted text will reflect here...</p>
+        {% else %}
+            <h2>Transcripted output</h2>
+            <p id="outputtext">{{ transcripted_text }}</p> 
+        {% endif %}
+    </div>
+
+    <footer id="footer">
+        <br>
+        <br>
+        <h5>Designed & Developed by Centurion Univerity with❤️</h5>
+        <h5>Copyright © 2024 | All Rights Reserved</h5>
+    </footer>
+
+</body>
+</html>
